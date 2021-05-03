@@ -54,14 +54,25 @@
 #   print(f"You can drive at age {age}.")
 
 # #Print is Your Friend
+#Broken:
 # pages = 0
 # word_per_page = 0
 # pages = int(input("Number of pages: "))
 # word_per_page == int(input("Number of words per page: "))
 # total_words = pages * word_per_page
 # print(total_words)
+#This bugs out by returning 0 as an answer. You can use Print to debug by printing the values directly after receiving input, seeing which value is causing the return of 0. Doing this, you can see that that the word_per_page is causing the issue and returning a 0 no matter what is entered. When you look at the code where it is input, you can see that it uses a double == instead of a single =, setting it to the originally defined 0. 
+# pages = 0
+# word_per_page = 0
+# pages = int(input("Number of pages: "))
+# print(pages)
+# word_per_page = int(input("Number of words per page: "))
+# # print(word_per_page)
+# total_words = pages * word_per_page
+# print(total_words)
 
 # #Use a Debugger
+#Broken:
 # def mutate(a_list):
 #   b_list = []
 #   for item in a_list:
@@ -69,4 +80,14 @@
 #   b_list.append(new_item)
 #   print(b_list)
 
+# mutate([1,2,3,5,8,13])
+#This is supposed to loop through the items in the a_list, times them by 2, then put them each in the b_list after. Running it through Python Tutor Debugger, we see it loops through the list and multiplies them by 2, but then immediately loops back to do the next number-- without adding it to the list. We can then look at the code and realize the call to put the new value in the b list is NOT in the loop, and we can indent it so it IS, causing each mutated number to be added to the b list.
+#You can also pick a "break point" by clicking a line in Python Tutor, and it will tell you when it runs-- in the bugged version, it will show only one activation, towards the end.
+#Fixed:
+# def mutate(a_list):
+#   b_list = []
+#   for item in a_list:
+#     new_item = item * 2
+#     b_list.append(new_item)
+#   print(b_list)
 # mutate([1,2,3,5,8,13])
